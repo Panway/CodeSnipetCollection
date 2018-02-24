@@ -33,12 +33,15 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
     <script src="popup.js"></script>
+    <script src="libs/jquery-3.2.0.min.js"></script>
+  <script src="js/qrcode.min.js"></script>
+
     <script type="text/javascript">
     </script>
   </head>
 
   <body>
-    <h1>改变网页背景色</h1>
+    <h1>改变网页背景色➡️</h1>
     <div id="container">
       <span>选择一个颜色</span>
       <select id="dropdown">
@@ -51,10 +54,11 @@
       
     </div>
     <div>
-    <input id="text" type="text" value="http://www.runoob.com" style="width:80%" /><br />
+    <input id="text" type="text" value="" style="width:80%" /><br />
     </div>
-<div id="butt">
-<input type="button" value="生成二维码" ">
+<div >
+  <a href="#" id="generate_qr_code">网页背景改成护眼绿色</a>
+<input id="butt" type="button" value="将当前URL生成二维码">
 </div>
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
 
