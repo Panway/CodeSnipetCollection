@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "WeirdPan",
+  "description": "iOS开发的工具箱",
+  "version": "1.0.1",
+
+  "browser_action": {
+    "default_icon": "icon38.png",
+    "default_popup": "popup.html",
+    "default_title": "潘大神"
+  },
+  "background": {
+    "scripts": ["libs/jquery-3.2.0.min.js", "background.js","popup.js"]
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "alarms",
+    "notifications"
+  ]
+}

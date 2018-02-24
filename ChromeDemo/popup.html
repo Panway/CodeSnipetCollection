@@ -1,0 +1,62 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Getting Started Extension's Popup</title>
+    <style type="text/css">
+      body {
+        margin: 10px;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        /*flex-direction: row;*/
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script src="popup.js"></script>
+    <script type="text/javascript">
+    </script>
+  </head>
+
+  <body>
+    <h1>改变网页背景色</h1>
+    <div id="container">
+      <span>选择一个颜色</span>
+      <select id="dropdown">
+        <option selected disabled hidden value=''></option>
+        <option value="white">白色</option>
+        <option value="pink">粉红</option>
+        <option value="green">绿色</option>
+        <option value="yellow">黄色</option>
+      </select>
+      
+    </div>
+    <div>
+    <input id="text" type="text" value="http://www.runoob.com" style="width:80%" /><br />
+    </div>
+<div id="butt">
+<input type="button" value="生成二维码" ">
+</div>
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+
+  </body>
+</html>
