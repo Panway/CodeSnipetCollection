@@ -11,7 +11,7 @@
 
 @implementation UIImage (XiuDian)
 
-+ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars groupImageSize:(CGSize)imageSize  placeholderImage:(UIImage *)placeholderImage completion:(void (^)(UIImage * image))completion {
++ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars groupImageSize:(CGSize)imageSize groupImageName:(NSString *)groupImageName placeholderImage:(UIImage *)placeholderImage completion:(void (^)(UIImage * image, NSString *cacheImageURL))completion {
     if (avatars.count < 1) {
         return;
     }
@@ -38,7 +38,13 @@
                 //开始合成
                 UIImage *groupImage = [self createGroupImageWithAvatars:imageArr Size:imageSize];
                 if (completion) {
-                    completion(groupImage);
+                    [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = NO;
+                    [[SDImageCache sharedImageCache] storeImage:image imageData:nil forKey:groupImageName toDisk:YES completion:^{
+                        [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = YES;
+                    }];
+                    NSString *cacheImagePath = [NSString stringWithFormat:@"file://%@",[[SDImageCache sharedImageCache] defaultCachePathForKey:groupImageName]];
+
+                    completion(groupImage,cacheImagePath);
                 }
                 //                _imageView.image = groupImage;
             }
