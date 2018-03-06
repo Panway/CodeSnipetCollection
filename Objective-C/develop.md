@@ -1,7 +1,7 @@
 # Runtime
 
 
-* [1.交换方法](#1.交换实例方法)
+* [多线程](#1_1)
    + [1.交换实例方法](#1.交换实例方法)
 	+ [2.交换类方法](#2.交换类方法)
 * [2.BBB](#2.BBB)
@@ -11,55 +11,33 @@
 ---------------------------------------------------------------------
 
 
-<h3 id="1.交换实例方法">1.1交换实例方法</h3>
+<h3 id="1_1">多线程</h3>
 
 ```objc
-#import <objc/runtime.h>
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
 
-static inline void pw_swizzleSelector(Class theClass, SEL originalSelector, SEL swizzledSelector) {
-    Method originalMethod = class_getInstanceMethod(theClass, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(theClass, swizzledSelector);
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-}
-
-//usage:
-- (NSString *)xd_substringFromIndex:(NSUInteger)from {
-    if (from> self.length) {
-        return @"";
-    }
-    return [self substringWithRange:NSMakeRange(from, self.length - from)];
-}
-+ (void)load {
-    pw_swizzleSelector([NSString class],
-                       @selector(substringFromIndex:),
-                       @selector(xd_substringFromIndex:));
-}
-
+        });
+    });
+    
+    
 ```
 <h3 id="2.交换类方法">1.2 交换类方法</h3>
 
 
 
 ```objc
-#import <objc/runtime.h>
 
-void pw_swizzleClassMethod(Class c, SEL orig, SEL new) {
-    Method origMethod = class_getClassMethod(c, orig);
-    Method newMethod = class_getClassMethod(c, new);
-    c = object_getClass((id)c);
-    if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod)))
-        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-    else
-        method_exchangeImplementations(origMethod, newMethod);
-}
 
 //usage:
-+ (UIImage *)xd_imageNamed:(NSString *)name {
-    return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:nil]];
+void dispatch_queue_async_safe2(dispatch_queue_t queue, dispatch_block_t block) {
+    if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(queue)) == 0) {
+        block();
+    } else {
+        dispatch_async(queue, block);
+    }
 }
-+ (void)load {
-    pw_swizzleClassMethod([UIImage class], @selector(imageNamed:), @selector(xd_imageNamed:));
-}
+
 ```
 <h3 id="2.BBB">3.CCC</h3>
 <h3 id="3.CCC">3.CCC</h3>

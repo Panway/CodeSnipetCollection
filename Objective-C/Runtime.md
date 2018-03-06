@@ -65,3 +65,8 @@ void pw_swizzleClassMethod(Class c, SEL orig, SEL new) {
 <h3 id="3.CCC">3.CCC</h3>
 
 
+[NSHipster - Method Swizzling](http://nshipster.cn/method-swizzling/)
+
+[使用method-swizzling让程序更健壮](https://www.jianshu.com/p/c89b2716d60d)
+
+[Method Swizzling(一)](https://www.jianshu.com/p/14018a8ee221)
