@@ -39,7 +39,7 @@
                 UIImage *groupImage = [self createGroupImageWithAvatars:imageArr Size:imageSize];
                 if (completion) {
                     [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = NO;
-                    [[SDImageCache sharedImageCache] storeImage:image imageData:nil forKey:groupImageName toDisk:YES completion:^{
+                    [[SDImageCache sharedImageCache] storeImage:groupImage imageData:nil forKey:groupImageName toDisk:YES completion:^{
                         [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = YES;
                     }];
                     NSString *cacheImagePath = [NSString stringWithFormat:@"file://%@",[[SDImageCache sharedImageCache] defaultCachePathForKey:groupImageName]];
