@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (XiuDian)
+
++ (NSString *)groupImageCachedURLWithGroupID:(NSString *)groupID;
+
 - (UIImage *)imageByRoundCornerRadius:(CGFloat)radius
                               corners:(UIRectCorner)corners
                           borderWidth:(CGFloat)borderWidth
@@ -22,6 +25,11 @@
  placeholderImage:无头像的群成员占位图
  completion:完成后的block
  */
-+ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars groupImageSize:(CGSize)imageSize groupImageName:(NSString *)groupImageName placeholderImage:(UIImage *)placeholderImage completion:(void (^)(UIImage * image, NSString *cacheImageURL))completion;
++ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars
+                         groupImageSize:(CGSize)imageSize
+                         groupImageName:(NSString *)groupImageName
+                       placeholderImage:(UIImage *)placeholderImage
+                        backgroundColor:(UIColor *)backgroundColor
+                             completion:(void (^)(UIImage * image, NSString *cacheImageURL))completion;
 @end
 

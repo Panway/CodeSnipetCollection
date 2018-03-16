@@ -11,7 +11,18 @@
 
 @implementation UIImage (XiuDian)
 
-+ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars groupImageSize:(CGSize)imageSize groupImageName:(NSString *)groupImageName placeholderImage:(UIImage *)placeholderImage completion:(void (^)(UIImage * image, NSString *cacheImageURL))completion {
++ (NSString *)groupImageCachedURLWithGroupID:(NSString *)groupID {
+    NSString *groupImageName = [NSString stringWithFormat:@"GroupImage_%@.png",groupID];
+    return [NSString stringWithFormat:@"file://%@",[[SDImageCache sharedImageCache] defaultCachePathForKey:groupImageName]];
+}
+
++ (void)generateGroupImageWithImageURLs:(NSArray <NSString *> *)avatars
+                         groupImageSize:(CGSize)imageSize
+                         groupImageName:(NSString *)groupImageName
+                       placeholderImage:(UIImage *)placeholderImage
+                        backgroundColor:(UIColor *)backgroundColor
+                             completion:(void (^)(UIImage * image, NSString *cacheImageURL))completion
+{
     if (avatars.count < 1) {
         return;
     }
@@ -36,15 +47,14 @@
             }
             if (imageIndex == imageCount || imageIndex == 9) {
                 //开始合成
-                UIImage *groupImage = [self createGroupImageWithAvatars:imageArr Size:imageSize];
+                UIImage *groupImage = [self createGroupImageWithAvatars:imageArr Size:imageSize backgroundColor:backgroundColor];
                 if (completion) {
                     [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = NO;
                     [[SDImageCache sharedImageCache] storeImage:groupImage imageData:nil forKey:groupImageName toDisk:YES completion:^{
                         [SDImageCache sharedImageCache].config.shouldCacheImagesInMemory = YES;
+                        NSString *cacheImagePath = [NSString stringWithFormat:@"file://%@",[[SDImageCache sharedImageCache] defaultCachePathForKey:groupImageName]];
+                        completion(groupImage,cacheImagePath);
                     }];
-                    NSString *cacheImagePath = [NSString stringWithFormat:@"file://%@",[[SDImageCache sharedImageCache] defaultCachePathForKey:groupImageName]];
-
-                    completion(groupImage,cacheImagePath);
                 }
                 //                _imageView.image = groupImage;
             }
@@ -54,21 +64,25 @@
     }
     
 }
-+ (UIImage *)createGroupImageWithAvatars:(NSArray *)avatars Size:(CGSize)size {
++ (UIImage *)createGroupImageWithAvatars:(NSArray *)avatars Size:(CGSize)size backgroundColor:(UIColor *)backgroundColor {
     //列数
     NSInteger column_num = avatars.count<5?2:3;//ceil(avatars.count/2.0);
+    CGFloat padding = 1;
+    
     //行数
     NSInteger row_num = ceil(avatars.count/(float)column_num);
     //第一行个数
     NSInteger first_row_num = avatars.count - column_num*(row_num-1);
     //    NSLog(@"\n N=%@ : %ld行  %ld列 第一行%ld个",@(avatars.count),row_num,column_num,first_row_num);
     //每个小图的宽度
-    CGFloat eachImageW = size.width/column_num;
+    CGFloat eachImageW = (size.width-padding*(padding+1)) /column_num;
     //画布大小
     CGSize cavasSize = size;
     CGFloat bottomMargin = (cavasSize.height-eachImageW*row_num)/2;
-    
     UIGraphicsBeginImageContextWithOptions(cavasSize, NO, [UIScreen mainScreen].scale);
+    [backgroundColor setFill];
+    CGRect bounds = CGRectMake(0, 0, size.width, size.height);
+    UIRectFill(bounds);
     //从最后一个开始排列
     for (NSInteger i = avatars.count-1; i >=0; i --) {
         //        UIImage *image = [UIImage imageNamed:avatars[i]];
@@ -89,7 +103,7 @@
             }
         }
         CGFloat top = size.height - bottomMargin -(avatars.count-(i+1))/column_num*eachImageW - eachImageW;
-        CGRect imageFrame = CGRectMake(left, top , eachImageW, eachImageW);
+        CGRect imageFrame = CGRectMake(left +padding/2, top +padding/2 , eachImageW, eachImageW);
         //        NSLog(@"\n\ni=%@\nleft=%.1f\ntop=%.1f\nP=%ld",@(i),left,top,(avatars.count-(i+1))/3);
         [image drawInRect:imageFrame];
     }
