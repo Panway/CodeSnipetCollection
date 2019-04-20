@@ -5,62 +5,84 @@
  value "popup.html".
  -->
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
 
-      h1 {
-        font-size: 15px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <title>Getting Started Extension's Popup</title>
+  <style type="text/css">
+  body {
+    margin: 10px;
+    white-space: nowrap;
+    /*background-color: #f2f2f2;*/
 
-      #container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        /*flex-direction: row;*/
-      }
-    </style>
+  }
 
-    <!--
+  h1 {
+    font-size: 15px;
+  }
+
+  .panda_flex {
+    display: flex;
+  }
+
+  #container {
+    /*align-items: center;*/
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  </style>
+  <link rel="stylesheet" href="css/panda.css">
+  <!--
       - JavaScript and HTML must be in separate files: see our Content Security
       - Policy documentation[1] for details and explanation.
       -
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
-    <script src="popup.js"></script>
-    <script src="libs/jquery-3.2.0.min.js"></script>
+  <script src="popup.js"></script>
+  <script src="libs/jquery-3.2.0.min.js"></script>
   <script src="js/qrcode.min.js"></script>
+</head>
 
-    <script type="text/javascript">
-    </script>
-  </head>
-
-  <body>
-    <h1>改变网页背景色➡️</h1>
-    <div id="container">
-      <span>选择一个颜色</span>
-      <select id="dropdown">
-        <option selected disabled hidden value=''></option>
-        <option value="white">白色</option>
-        <option value="pink">粉红</option>
-        <option value="green">绿色</option>
-        <option value="yellow">黄色</option>
-      </select>
-      
+<body>
+  <h1 style="text-align: center;">Panda的工具箱</h1>
+  <div id="container">
+    <div class="panda_flex" style="align-items: center;">
+      <!-- <span>改变网页背景色👉</span> -->
+      <!-- <span>选择一个颜色</span> -->
+      <div style="display: inline-block;background-color: #fff;">
+        <select id="dropdown" class="panda-select" style="color: #26a2ff; border: 1px solid #e6ecf0;height: 30px;line-height: 30px;font-size: 14px;">
+          <!-- <option selected disabled hidden value=''></option> -->
+          <option value="white">网页背景色:白色</option>
+          <option value="pink">网页背景色:粉红</option>
+          <option value="green">网页背景色:绿色</option>
+          <option value="yellow">网页背景色:黄色</option>
+        </select>
+      </div>
     </div>
-    <div>
-    <input id="text" type="text" value="" style="width:80%" /><br />
+    <div class="panda_flex" style="flex-direction: row;margin-top: 10px;">
+      <input id="pandatext" type="text" placeholder="请输入链接或文字（用来生成二维码）" style="padding: 4px;    border: 1px solid #e6ecf0;border-radius: 5px;margin-right: 10px;flex-grow: 2;" />
+      <button id="generate_qr_code" type="submit" class="btn btn-primary" style="background-color: #4AB3F4;border: 1px solid #1da1f2;    padding: 6px 16px;color: #fff;border-radius: 29px;">
+        生成
+      </button>
+      <br />
     </div>
-<div >
-  <a href="#" id="generate_qr_code">网页背景改成护眼绿色</a>
-<input id="butt" type="button" value="将当前URL生成二维码">
-</div>
-<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+    <div class="panda_flex" style="margin-top: 9px;">
+      <!-- <a href="#" id="change_background_color">网页背景改成护眼绿色</a> -->
+      <!-- <input id="currentURLQRCode" type="button" value="将当前URL生成二维码"> -->
+      <div id="currentURLQRCode" style="color: #0070c9;font-size: 13px;">将当前URL生成二维码</div>
+    </div>
+    <div class="panda_flex" style="justify-content: center;">
+      <div id="qrcode" style="width:100px; height:100px; margin-top:15px;background-color: #f00;">
+      </div>
+    </div>
+    <div class="panda_flex" style="justify-content: center;margin-top: 11px;height: 44px;color: #888;font-size: 12px;">Copyright © 2019 Milo 😄 All rights reserved.</div>
+  </div>
+</body>
+<script type="text/javascript">
+  console.log('View did appear');
+// var pandatext = document.getElementById("pandatext");
+// pandatext.setAttribute('size', pandatext.getAttribute('placeholder').length);
+</script>
 
-  </body>
 </html>

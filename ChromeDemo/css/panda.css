@@ -1,0 +1,15 @@
+.panda-select {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: 17px;
+    height: 39px;
+    line-height: 39px;
+    position: relative;
+    z-index: 1;
+    padding: 0 12px;
+    text-align:center;
+    text-align-last:center;/*仅chrome*/
+  }
