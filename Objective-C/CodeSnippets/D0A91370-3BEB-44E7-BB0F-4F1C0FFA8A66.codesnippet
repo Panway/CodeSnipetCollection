@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>dddbutton</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button addTarget:self
+                   action:@selector(aMethod:)
+         forControlEvents:UIControlEventTouchUpInside];
+        [button setTitle:@"Show View" forState:UIControlStateNormal];
+        button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
+[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+button.backgroundColor = [UIColor blueColor];
+        [self addSubview:button];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D0A91370-3BEB-44E7-BB0F-4F1C0FFA8A66</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>啦啦啦</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>快速UIbutton</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

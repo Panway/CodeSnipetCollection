@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>dddlabel</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UILabel *aLB = [UILabel new];
+[self addSubview:aLB];
+aLB.text = @"UI调试开关";
+aLB.textAlignment = NSTextAlignmentCenter;
+aLB.textColor = [UIColor darkGrayColor];
+aLB.font = [UIFont systemFontOfSize:15.0];
+aLB.backgroundColor = [UIColor whiteColor];
+aLB.frame = CGRectMake(15, 0, 100, 44);</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9E85DD40-F468-4FDF-BC23-1EF4C7184971</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>快速Label</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>快速Label</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -134,8 +134,8 @@
     //执行二维码第三方库 
     chrome.tabs.executeScript(null, { file: "js/qrcode.min.js" }, function() {
       var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width: 100,
-        height: 100
+        width: 250,
+        height: 250
       });
       //生成二维码
       qrcode.makeCode(text);
