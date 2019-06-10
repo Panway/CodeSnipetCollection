@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.subspec 'PPAlertAction' do |ppalertaction|
     ppalertaction.ios.deployment_target = '8.0'
     ppalertaction.source_files = 'iOS/PPAlertAction/**/*'
-    runtimetool.dependency 'PPiOSKit/RuntimeTool'
+    ppalertaction.dependency 'PPiOSKit/RuntimeTool'
   end
 
   s.subspec 'SwipePopGesture' do |ppalertaction|
