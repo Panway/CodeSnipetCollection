@@ -1,14 +1,14 @@
 //
-//  XDRuntimeUtility.h
-//  nullable
+//  PPRuntimeUtility.h
+//  
 //
-//  Created by wangchao on 2018/3/6.
-//  Copyright © 2018年 vincent. All rights reserved.
+//  Created by panda on 2018/3/6.
+//  Copyright © 2018年 panda. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface XDRuntimeUtility : NSObject
+@interface PPRuntimeUtility : NSObject
 ///交换实例方法
 void pp_swizzleInstanceMethod(Class className, SEL original, SEL new);
 /// 交换类方法
