@@ -20,7 +20,7 @@
 
 #import "NSArray+Safe.h"
 #import <objc/runtime.h>
-#import "PPRuntimeUtility.h"
+#import "PPRuntimeTool.h"
 #import <UIKit/UIDevice.h>
 
 @implementation NSArray (Safe)

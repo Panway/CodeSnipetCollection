@@ -8,7 +8,7 @@
 
 #import "NSDictionary+Safe.h"
 #import <objc/runtime.h>
-#import "PPRuntimeUtility.h"
+#import "PPRuntimeTool.h"
 
 @implementation NSDictionary (Safe)
 

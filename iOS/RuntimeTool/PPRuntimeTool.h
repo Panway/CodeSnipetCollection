@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PPRuntimeUtility : NSObject
+@interface PPRuntimeTool : NSObject
 ///交换实例方法
 void pp_swizzleInstanceMethod(Class className, SEL original, SEL new);
 /// 交换类方法

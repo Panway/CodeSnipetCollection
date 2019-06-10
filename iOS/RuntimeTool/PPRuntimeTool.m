@@ -6,10 +6,10 @@
 //  Copyright © 2018年 panda. All rights reserved.
 //
 
-#import "PPRuntimeUtility.h"
+#import "PPRuntimeTool.h"
 #import <objc/runtime.h>
 
-@implementation PPRuntimeUtility
+@implementation PPRuntimeTool
 ///交换实例方法
 void pp_swizzleInstanceMethod(Class className, SEL original, SEL new) {
     Method originalMethod = class_getInstanceMethod(className, original);
