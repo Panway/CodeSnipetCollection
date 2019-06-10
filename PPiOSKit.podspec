@@ -26,12 +26,19 @@ Pod::Spec.new do |s|
   s.subspec 'PPAlertAction' do |ppalertaction|
     ppalertaction.ios.deployment_target = '8.0'
     ppalertaction.source_files = 'iOS/PPAlertAction/**/*'
+    runtimetool.dependency 'PPiOSKit/RuntimeTool'
   end
 
   s.subspec 'SwipePopGesture' do |ppalertaction|
     ppalertaction.ios.deployment_target = '8.0'
     ppalertaction.source_files = 'iOS/SwipePopGesture/**/*'
   end
+
+  s.subspec 'RuntimeTool' do |runtimetool| 
+    runtimetool.ios.deployment_target = '8.0'
+    runtimetool.source_files = 'iOS/RuntimeTool/**/*'
+  end
+
   # s.resource_bundles = {
   #   'PWiOSTool' => ['PWiOSTool/Assets/*.png']
   # }
