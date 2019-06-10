@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     ppalertaction.source_files = 'iOS/PPAlertAction/**/*'
   end
 
-  s.subspec 'FullScreenGesture' do |ppalertaction|
+  s.subspec 'SwipePopGesture' do |ppalertaction|
     ppalertaction.ios.deployment_target = '8.0'
     ppalertaction.source_files = 'iOS/SwipePopGesture/**/*'
   end
