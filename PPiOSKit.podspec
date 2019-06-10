@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'FullScreenGesture' do |ppalertaction|
     ppalertaction.ios.deployment_target = '8.0'
-    ppalertaction.source_files = 'iOS/FullScreenGesture/**/*'
+    ppalertaction.source_files = 'iOS/SwipePopGesture/**/*'
   end
   # s.resource_bundles = {
   #   'PWiOSTool' => ['PWiOSTool/Assets/*.png']

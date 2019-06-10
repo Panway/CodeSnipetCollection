@@ -4,8 +4,9 @@
 
 ## iOS
 
+所有库均是子pod，所有类均采用PP前缀，只是为了能快速打出来
 ``` bash
-#快捷AlertView和AlertAction
+#快捷AlertView和AlertAction (Block封装)
 pod 'PPiOSKit/PPAlertAction', :git=>'https://github.com/Panway/CodeSnipetCollection.git'
 # 支付宝SDK镜像,适用于集成了百川sdk，出现UTDID冲突
 pod 'AlipayiOSSDK',:git => 'https://github.com/wooodypan/AlipaySDKMirror.git'

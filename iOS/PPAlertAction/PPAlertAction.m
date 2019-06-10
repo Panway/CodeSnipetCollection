@@ -6,7 +6,7 @@
 //  Copyright © 2015年 lbxia. All rights reserved.
 //
 
-#import "HZAlertAction.h"
+#import "PPAlertAction.h"
 #import <UIKit/UIKit.h>
 #import "UIAlertView+LBXAlertAction.h"
 #import "UIActionSheet+LBXAlertAction.h"
