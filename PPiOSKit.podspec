@@ -43,6 +43,11 @@ Pod::Spec.new do |s|
     runtimetool.source_files = 'iOS/RuntimeTool/**/*'
   end
 
+  s.subspec 'iOSCategorys' do |iOSCategorys| 
+    iOSCategorys.ios.deployment_target = '8.0'
+    iOSCategorys.source_files = 'iOS/Category/**/*'
+  end
+
   # s.resource_bundles = {
   #   'PWiOSTool' => ['PWiOSTool/Assets/*.png']
   # }
