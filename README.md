@@ -22,5 +22,9 @@ pod 'AlipayiOSSDK',:git => 'https://github.com/wooodypan/AlipaySDKMirror.git'
 pod 'QQSDK',:git =>'https://github.com/wooodypan/QQSDK.git'
 ```
 
-
+## Git
+```bash
+#一行代码创建git忽略文件（如需忽略Pods文件夹请vim .gitignore修改）
+curl https://raw.githubusercontent.com/github/gitignore/master/Objective-C.gitignore -o .gitignore
+```
 
