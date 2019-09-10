@@ -15,6 +15,9 @@ pod 'PPiOSKit/SwipePopGesture', :git=>'https://github.com/Panway/CodeSnipetColle
 #0行代码捕获常见数组字典异常，防止闪退
 pod 'PPiOSKit/CrashCatcher', :git=>'https://github.com/Panway/CodeSnipetCollection.git'
 
+#常用View，比如水平排列的一排View、
+pod 'PPiOSKit/CommomViews', :git=>'https://github.com/Panway/CodeSnipetCollection.git'
+
 # 支付宝SDK镜像,适用于集成了百川sdk，出现UTDID冲突
 pod 'AlipayiOSSDK',:git => 'https://github.com/wooodypan/AlipaySDKMirror.git'
 

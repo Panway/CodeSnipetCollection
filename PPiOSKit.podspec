@@ -48,6 +48,10 @@ Pod::Spec.new do |s|
     iOSCategorys.source_files = 'iOS/Category/**/*'
   end
 
+  s.subspec 'CommomViews' do |gif|
+    gif.ios.deployment_target = '8.0'
+    gif.source_files = 'iOS/CommomViews/*'
+  end
   # s.resource_bundles = {
   #   'PWiOSTool' => ['PWiOSTool/Assets/*.png']
   # }
