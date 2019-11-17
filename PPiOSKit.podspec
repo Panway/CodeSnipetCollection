@@ -52,6 +52,12 @@ Pod::Spec.new do |s|
     gif.ios.deployment_target = '8.0'
     gif.source_files = 'iOS/CommomViews/*'
   end
+
+  s.subspec 'PPImageViewer' do |ppimageviewer|
+    ppimageviewer.ios.deployment_target = '8.0'
+    ppimageviewer.source_files = 'iOS/PPImageViewer/**/*'
+  end
+
   # s.resource_bundles = {
   #   'PWiOSTool' => ['PWiOSTool/Assets/*.png']
   # }
