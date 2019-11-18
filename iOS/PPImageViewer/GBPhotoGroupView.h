@@ -22,12 +22,9 @@
 
 @class YYPhotoGroupCell;
 @protocol PPPhotoGroupCellDelegate <NSObject>
+@optional
 - (void)loadImage:(NSString *)imageURL inCell:(YYPhotoGroupCell *) cell;
-- (void)pp_setImageWithURL:(nullable NSURL *)url
-placeholderImage:(nullable UIImage *)placeholder
-         options:(NSInteger)options
-                  progress:(void(^_Nullable)(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL))progressBlock
-                 completed:(void(^_Nullable)(UIImage * _Nullable image, NSError * _Nullable error, NSURL * _Nullable imageURL))completedBlock;
+
 
 @end
 
