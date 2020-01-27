@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>aaatf</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let aTF = UITextField()
+self.view.addSubview(aTF)
+aTF.placeholder = "placeholder"
+aTF.font = UIFont.systemFont(ofSize: 15)
+aTF.keyboardType = UIKeyboardType.numberPad
+aTF.returnKeyType = UIReturnKeyType.done
+aTF.clearButtonMode = UITextField.ViewMode.whileEditing
+aTF.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+aTF.snp.makeConstraints { (make) in
+    make.left.equalTo(self.view).offset(15)
+    make.right.equalTo(self.view).offset(-15)
+    make.height.equalTo(30)
+    make.top.equalTo(self.view).offset(115)
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5FE03F9D-73CE-4C8F-9A6B-7256CA7D5B78</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>快速UITextField - Swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
