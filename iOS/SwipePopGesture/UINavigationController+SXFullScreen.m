@@ -63,8 +63,9 @@
     if (self.topViewController.xd_disableInteractivePop) {
         return NO;
     }
-    
-    if ([gestureRecognizer translationInView:gestureRecognizer.view].x <= 0) {
+    // iOS13碰到如下错误，所以判断是不是UIPanGestureRecognizer：
+    // -[_UIBarTapGestureRecognizer translationInView:]: unrecognized selector sent to instance 0x10fd9d630
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && [gestureRecognizer translationInView:gestureRecognizer.view].x <= 0) {
         return NO;
     }
     
