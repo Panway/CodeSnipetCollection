@@ -93,6 +93,16 @@
         [alertController addAction:action];
     }
     
+#if TARGET_OS_MACCATALYST
+    [alertController setModalPresentationStyle:UIModalPresentationPopover];
+    UIViewController *vc = [PPAlertAction getTopViewController];
+    alertController.popoverPresentationController.sourceView = vc.view;
+//    alertController.popoverPresentationController.barButtonItem = button;
+//    NSLog(@"UIKit running on macOS");
+#else
+//    NSLog(@"Your regular code");
+#endif
+
     [[PPAlertAction getTopViewController] presentViewController:alertController animated:YES completion:nil];
 
 }
