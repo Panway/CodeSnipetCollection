@@ -64,4 +64,11 @@
         [self safe_removeObjectForKey:aKey];
     }
 }
+- (void)na_setObject:(id)anObject forKeyedSubscript:(id<NSCopying>)aKey {
+    if (!anObject||!aKey) {
+        NSLog(@"keyOrObjectIsNull:%@,%@",aKey,anObject);
+        return;
+    }
+    [self na_setObject:anObject forKey:aKey];
+}
 @end

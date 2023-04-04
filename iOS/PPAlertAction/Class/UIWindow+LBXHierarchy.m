@@ -29,10 +29,13 @@
 - (UIViewController*)topMostController
 {
     UIViewController *topController = [self rootViewController];
-    
+    if ([topController isKindOfClass:[UISplitViewController class]]) {
+        UISplitViewController *splitController = (UISplitViewController *)topController;
+        topController = splitController.viewControllers[0];
+    }
     //  Getting topMost ViewController
-    while ([topController presentedViewController])	topController = [topController presentedViewController];
-	
+    while ([topController presentedViewController])    topController = [topController presentedViewController];
+    
     //  Returning topMost ViewController
     return topController;
 }
