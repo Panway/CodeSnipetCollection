@@ -28,25 +28,28 @@
       // bg.test(); // 访问bg的函数
       // alert(bg.document.body.innerHTML); // 访问bg的DOM
       console.log('当前URL======' + url);
-      var pandatext = document.getElementById("pandatext");
-      $('#pandatext').val(url);
-      generateQRcode(url);
-      // pandatext.setAttribute('size',pandatext.getAttribute('placeholder').length);
-      // alert(url);
-      // var notification = webkitNotifications.createNotification(  
-      // 'images/email_open.png',  // icon url - can be relative  
-      // '通知消息',  // notification title  
-      // '明天放假！'  // notification body text  
-      // );    
-      // notification.show();
-      console.assert(typeof url == 'string', 'tab.url should be a string');
-      // document.getElementById("butt").addEventListener("click", makeCode);
-      $('#generate_qr_code').click(makeCode);
-      $('#currentURLQRCode').click(currentURLQRCode);
-      $('#change_background_color').click(() => {
-        // executeScriptToCurrentTab('document.body.style.backgroundColor="red";')
-        changeBackgroundColor('#c7edcc');
-      });
+      // var pandatext = document.getElementById("pandatext");
+      // 获取元素
+      var pandatext = document.getElementById('pandatext');
+      var generateQRcodeButton = document.getElementById('generate_qr_code');
+      var currentURLQRCodeButton = document.getElementById('currentURLQRCode');
+      // var changeBackgroundColorButton = document.getElementById('change_background_color');
+
+      // 设置 input 元素的值
+      pandatext.value = url;
+
+      // 生成 QR Code
+      generateQRcode(url,tab);
+
+      // 断言 url 的类型为字符串
+      console.assert(typeof url === 'string', 'tab.url should be a string');
+
+      // 添加点击事件监听器
+      generateQRcodeButton.addEventListener('click', makeCode);
+      currentURLQRCodeButton.addEventListener('click', currentURLQRCode);
+      // changeBackgroundColorButton.addEventListener('click', function() {
+      //     changeBackgroundColor('#c7edcc');//护眼绿色
+      // });
 
       callback(url);
     });
@@ -120,25 +123,29 @@
     generateQRcode(current_url);
   }
 
-  function generateQRcode(text) {
+  
+  function generateQRcode(text,tab) {
     if (!text) {
       alert("Please input text");
       pandatext.focus();
       return;
     }
-    //清空子节点（上次生成的二维码）
+
+    console.log("----------generateQRcode");
+    
+    // 清空子节点（上次生成的二维码）
     var qrCodeNode = document.getElementById("qrcode");
     while (qrCodeNode.firstChild) {
       qrCodeNode.removeChild(qrCodeNode.firstChild);
     }
     //执行二维码第三方库 
-    chrome.tabs.executeScript(null, { file: "js/qrcode.min.js" }, function() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      var currentUrl = tabs[0].url;
       var qrcode = new QRCode(document.getElementById("qrcode"), {
         width: 250,
         height: 250
       });
-      //生成二维码
-      qrcode.makeCode(text);
+      qrcode.makeCode(text.length > 0 ? text : currentUrl);
     });
   }
 
